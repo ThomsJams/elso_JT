@@ -10,9 +10,29 @@ def negyszog(x, y):
         alakzat = "teglalap"
     return kerulet, terulet, alakzat
 
+def negyzet():
+    turtle.penup()
+    turtle.goto(-50, 50)
+    turtle.pendown()
+    turtle.pencolor("black")
+    turtle.pensize(5)
+
+    for _ in range(4):
+        turtle.forward(100)
+        turtle.right(90)
+
+def pont(x, y):
+    pass
+
+def dobas():
+    turtle.clear()
+    negyzet()
+
+#app
 ablak = turtle.Screen()
 
 turtle.listen()
+turtle.onkey(dobas, "d")
 turtle.onkey(turtle.bye, "Escape")
 turtle.mainloop()
 
