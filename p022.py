@@ -45,8 +45,9 @@ def negyszog(x, y):
         alakzat = "teglalap"
     return kerulet, terulet, alakzat
 
-a = 4
-b = 3
-eredmeny = negyszog(a, b)
-print(f"A {eredmeny[2]} kerulet ", eredmeny[0])
-print(f"A {eredmeny[2]} terület ", eredmeny[1])
+if __name__ == "__main__":
+    a = 4
+    b = 3
+    eredmeny = negyszog(a, b)
+    print(f"A {eredmeny[2]} kerulet ", eredmeny[0])
+    print(f"A {eredmeny[2]} terület ", eredmeny[1])
