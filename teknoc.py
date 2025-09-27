@@ -1,5 +1,4 @@
 import turtle
-import random
 
 def negyszog(x, y):
     kerulet = 2 * x + 2 * y
@@ -22,24 +21,50 @@ def negyzet():
         turtle.right(90)
 
 def pont(x, y):
-    pass
+    turtle.penup()
+    turtle.goto(x, y)
+    turtle.pendown()
+    turtle.dot(5, "Black")
 
 def dobas():
+    import random
+    turtle.hideturtle()
     turtle.clear()
     negyzet()
+    szam = random.randint(1, 6)
 
-#app
+    if szam == 1:
+        pont(0, 0)
+    elif szam == 2:
+        pont(-30, 30)
+        pont(30, -30)
+    elif szam == 3:
+        pont(0, 0)
+        pont(-30, 30)
+        pont(30, -30)
+    elif szam == 4:
+        pont(30, 30)
+        pont(-30, -30)
+        pont(-30, 30)
+        pont(30, -30)
+    elif szam == 5:
+        pont(0, 0)
+        pont(30, 30)
+        pont(-30, -30)
+        pont(-30, 30)
+        pont(30, -30)
+    elif szam == 5:
+        pont(30, 0)
+        pont(30, 30)
+        pont(-30, -30)
+        pont(-30, 30)
+        pont(30, -30)
+        pont(-30, 0)
+
+
 ablak = turtle.Screen()
 
 turtle.listen()
 turtle.onkey(dobas, "d")
 turtle.onkey(turtle.bye, "Escape")
 turtle.mainloop()
-
-
-if __name__ == "__main__":
-    a = 4
-    b = 3
-    eredmeny = negyszog(a, b)
-    print(f"A {eredmeny[2]} kerulet ", eredmeny[0])
-    print(f"A {eredmeny[2]} terület ", eredmeny[1])
