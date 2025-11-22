@@ -1,5 +1,10 @@
 import tkinter as tk
 import p3_osztaly
+from tkinter import messagebox
+import requests
+
+from p3_tkinter import dobasszam
+
 
 class KockaApp(p3_osztaly.KockaDobas):
     def __init__(self, master):
@@ -16,11 +21,26 @@ class KockaApp(p3_osztaly.KockaDobas):
 
 
     def api_lekeres(self):
-        pass
+        try:
+            valasz = requests.get("http://localhost:5000/api/data", timeout=5)
+            valasz.raise_for_status()
+            adat = valasz.json()
+            self.api_cimke.config(text=adat["uzenet"])
+            self.app.dobasok_szama_bemenet.set(adat["uzenet"])
+        except:
+            messagebox.showerror("Hiba", "Kapcsolat létrehozása sikertelen")
 
 
     def api_dobas(self):
-        pass
+        try:
+            dbszam = int(self.dobasok_szama_bemenet())
+            valasz = requests.get(f"http://localhost:5000/api/dobas/{dbszam}", timeout=5)
+            valasz.raise_for_status()
+            adat = valasz.json()
+            eredmenyek = adat["eredmenyek"]
+            self.eredmeny_cimke_szoveg.set("\n".join(f"{i+1} -- {eredmenyek[i]}" for i in range(6)))
+        except:
+            messagebox.showerror("Hiba", "Kapcsolat létrehozása sikertelen")
 
 
 if __name__ == '__main__':
