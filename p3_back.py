@@ -1,4 +1,4 @@
-from flask import Flask, jsonify
+from flask import Flask, jsonify, render_template
 import random
 import sqlite3
 
@@ -15,6 +15,16 @@ app = Flask(__name__)
 
 init_db()
 
+
+@app.route("/web")
+def webes_megjelenites():
+    conn = sqlite3.connect('kockazas.db')
+    db = conn.cursor()
+    db.execute("SELECT * FROM kocka")
+    osszes_adat = db.fetchall()
+    conn.close()
+
+    return render_template("adatok.html", adatok=osszes_adat)
 
 @app.route("/api/data")
 def adatkeres():

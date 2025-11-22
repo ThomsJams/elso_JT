@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <title>Kockadobás Adatbázis</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h1 { color: #333; }
+        table { border-collapse: collapse; width: 100%; margin-top: 20px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: center; }
+        th { background-color: #4CAF50; color: white; }
+        tr:nth-child(even) { background-color: #f2f2f2; }
+        tr:hover { background-color: #ddd; }
+    </style>
+</head>
+<body>
+
+    <h1>Mentett dobások az adatbázisban</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Összes dobás</th>
+                <th>1-esek</th>
+                <th>2-esek</th>
+                <th>3-asok</th>
+                <th>4-esek</th>
+                <th>5-ösök</th>
+                <th>6-osok</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for sor in adatok %}
+            <tr>
+                <td>{{ sor[0] }}</td>
+                <td>{{ sor[1] }}</td>
+                <td>{{ sor[2] }}</td>
+                <td>{{ sor[3] }}</td>
+                <td>{{ sor[4] }}</td>
+                <td>{{ sor[5] }}</td>
+                <td>{{ sor[6] }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>
